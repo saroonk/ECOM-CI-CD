@@ -1,0 +1,46 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <h3>₹{{ product.price }}</h3>
+        <p>Stock: {{ product.stock }}</p>
+        
+            <!-- <input type="hidden" name="pro_id" value="{{product.id}}">
+            <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ product.stock }}">
+      -->
+        {% if product.stock > 0 %}
+            <a data-product-id="{{ product.id }}"  class="btn btn-primary add-to-cart-btn">Add to Cart</a>
+            <!-- <a href="{% url 'buy_now' product.pk %}" class="btn btn-success" name="quantity" value="3">Buy Now</a> -->
+
+            <form method="post" action="{% url 'buy_now' product.pk %}">
+                {% csrf_token %}
+
+                <input type="number"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    class="form-control mb-2"
+                    style="width:120px;">
+
+                <button type="submit" class="btn btn-success">
+                    Buy Now
+                </button>
+            </form>
+
+
+        {% else %}
+            <button class="btn btn-secondary" disabled>Out of Stock</button>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

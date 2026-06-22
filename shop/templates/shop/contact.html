@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        form{
+            border: 1px solid black;
+            width: fit-content !important;
+            min-width: 500px;
+            margin: auto;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+
+        #contactform{
+            text-align: center;
+
+        }
+
+        input{
+            background-color: rgb(237, 235, 235) !important;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+
+        .form-field{
+            margin: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+        textarea{
+            background-color: rgb(237, 235, 235) !important;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+
+        }
+
+        .btn{
+            background-color: black;
+            color: white;
+            padding: 16px;
+            margin: auto;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>contact page</h1>
+
+    <div>
+
+
+        <form  id="contactform">
+            {% csrf_token %}
+                    <!-- {{ form.as_p }} -->
+
+
+
+            <div class="form-field">
+                <label for="">{{ form.name.label }}</label>
+                {{ form.name }}
+            </div>
+                        <div class="form-field">
+                <label for="">{{ form.email.label }}</label>
+                {{ form.email }}
+            </div>
+                        <div class="form-field">
+                <label for="">{{ form.phone.label }}</label>
+                {{ form.phone }}
+            </div>
+                        <div class="form-field">
+                <label for="">{{ form.message.label }}</label>
+                {{ form.message }}
+            </div>
+
+                    <button type="submit" class="btn">Submit</button>
+
+
+        </form>
+        <p id="result">RESULT : </p>
+    </div>
+
+    <script>
+        form = document.getElementById("contactform")
+        result = document.getElementById("result")
+        form.addEventListener('submit',async function(e){
+            e.preventDefault()
+
+            const formData = new FormData(form)
+
+            // fetch('/contact/',{
+            //     method : "POST",
+            //     body : formData
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success === true ) {
+            //         result.textContent = "Submitted successfully";
+            //     } else {
+            //         result.textContent = "Submission failed";
+            //     }
+            //     form.reset()
+            // })
+            // .catch(error => {
+            //     console.error(error);
+            //     result.textContent = "An error occurred";
+            // });
+
+
+            const response =await(fetch('/contact/',{
+                method : "POST",
+                body : formData
+            }))
+            const data = await response.json()
+            if (data.success == true){
+                result.textContent = "Submitted success"
+                form.reset()
+
+                 setTimeout(() => {
+                    result.textContent = "Waiting for result"
+
+
+                    
+                }, 5000);
+
+            }
+            else{
+                result.textContent = "error occured"
+
+
+            }
+                    
+
+        }
+        )
+    </script>
+</body>
+</html>

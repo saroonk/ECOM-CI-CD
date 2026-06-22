@@ -1,0 +1,128 @@
+.track-section {
+        padding: 80px 0;
+        background-color: #fcfdfc;
+        min-height: 80vh;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .search-container {
+        max-width: 600px;
+        margin: 0 auto 60px auto;
+        text-align: center;
+    }
+
+    /* Elegant Search Input */
+    .search-box {
+        position: relative;
+        margin-top: 30px;
+    }
+
+    .search-box .form-control {
+        padding: 18px 25px;
+        padding-right: 140px;
+        border-radius: 15px;
+        border: 2px solid #edf2ef;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 25px rgba(26, 67, 46, 0.05);
+    }
+
+    .btn-tracks {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        bottom: 8px;
+        background: var(--primary-green);
+        color: var(--white);
+        border: none;
+        padding: 0 25px;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-tracks:hover {
+        background: var(--accent-green);
+    }
+
+    /* Order Card Styling */
+    .order-card {
+        background: var(--white);
+        border-radius: 20px;
+        border: 1px solid #edf2ef;
+        padding: 25px;
+        margin-bottom: 25px;
+        transition: transform 0.3s ease;
+    }
+
+    .order-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+
+    .product-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 12px;
+        background: #f9fbf9;
+    }
+
+    .status-badge {
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .status-delivered { background: rgba(134, 201, 59, 0.15); color: #4e7a1a; }
+    .status-pending { background: rgba(237, 221, 94, 0.2); color: #8a7d1a; }
+
+    .btn-return {
+        border: 1.5px solid var(--primary-green);
+        color: var(--primary-green);
+        background: transparent;
+        border-radius: 10px;
+        padding: 8px 18px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-return:hover {
+        background: var(--primary-green);
+        color: var(--white);
+    }
+
+    /* Modal / Pop-up Styling */
+    .modal-content {
+        border-radius: 25px;
+        border: none;
+        padding: 20px;
+    }
+
+    .modal-header {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .return-form label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        color: var(--primary-green);
+    }
+
+    .file-upload-wrapper {
+        border: 2px dashed #edf2ef;
+        padding: 20px;
+        text-align: center;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .file-upload-wrapper:hover {
+        background: #f9fbf9;
+        border-color: var(--light-green);
+    }
